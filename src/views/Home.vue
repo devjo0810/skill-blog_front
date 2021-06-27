@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <v-row>
-      <v-col cols="12" lg="12" xl="8">
+      <v-col cols="12" lg="12">
         <div>
           <div class="pt-6">
             <h2 class="text-h4 font-weight-bold pb-4">인기 게시물</h2>

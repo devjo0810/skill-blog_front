@@ -48,8 +48,7 @@
               class="font-weight-bold text-h5 primary--text"
               @click="$router.push('/')"
             >
-              <v-icon large color="primary">mdi-feather</v-icon>Skill
-              <span class="accent--text">Blog</span>
+              <AppLogo />
             </v-toolbar-title>
           </v-col>
 
@@ -88,7 +87,11 @@
 </template>
 
 <script>
+import AppLogo from "../common/AppLogo.vue";
 export default {
+  components: {
+    AppLogo,
+  },
   data: () => ({
     drawer: null,
     btnItems: [
