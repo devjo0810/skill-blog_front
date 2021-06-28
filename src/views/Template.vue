@@ -19,6 +19,7 @@ import BlogCardSmall from "@/components/blog/card/BlogCardSmall.vue";
 import BlogCardMedium from "@/components/blog/card/BlogCardMedium.vue";
 import BlogCardLong from "@/components/blog/card/BlogCardLong.vue";
 import BlogCardLarge from "@/components/blog/card/BlogCardLarge.vue";
+import { mapActions } from "vuex";
 
 export default {
   components: {
@@ -109,5 +110,14 @@ export default {
       },
     ],
   }),
+  methods: {
+    ...mapActions(["showProgress", "hideProgress"]),
+  },
+  created() {
+    this.showProgress();
+    setTimeout(() => {
+      this.hideProgress();
+    }, 5000);
+  },
 };
 </script>

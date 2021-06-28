@@ -9,7 +9,13 @@
       dark
     >
       <v-list nav color="primary">
-        <v-list-item v-for="(item, i) in btnItems" :key="i" link :to="item.to">
+        <v-list-item
+          v-for="(item, i) in btnItems"
+          :key="i"
+          link
+          :to="item.to"
+          @click="clickHandler(item.handlerName)"
+        >
           <v-list-item-content>
             <v-list-item-title>{{ item.text }}</v-list-item-title>
           </v-list-item-content>
@@ -76,6 +82,7 @@
               :to="item.to"
               :color="item.color"
               class="ml-3 text-capitalize"
+              @click="clickHandler(item.handlerName)"
             >
               {{ item.text }}
             </v-btn>
@@ -88,24 +95,41 @@
 
 <script>
 import AppLogo from "../common/AppLogo.vue";
+import { mapGetters, mapActions } from "vuex";
+
+const loginBeforeBtnItmes = [
+  {
+    text: "로그인",
+    color: "primary",
+    to: "/login",
+  },
+  {
+    text: "회원가입",
+    color: "secondary",
+    to: "/signup",
+  },
+];
+
+const loginAfterBtnItmes = [
+  {
+    text: "마이페이지",
+    color: "primary",
+    to: "/mypage",
+  },
+  {
+    text: "로그아웃",
+    color: "secondary",
+    handlerName: "logout",
+  },
+];
+
 export default {
   components: {
     AppLogo,
   },
   data: () => ({
     drawer: null,
-    btnItems: [
-      {
-        text: "로그인",
-        color: "primary",
-        to: "/login",
-      },
-      {
-        text: "회원가입",
-        color: "secondary",
-        to: "/signup",
-      },
-    ],
+    btnItems: loginBeforeBtnItmes,
     barItems: [
       {
         title: "Home",
@@ -125,5 +149,40 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapGetters(["getIsLogin"]),
+  },
+  watch: {
+    getIsLogin: "btnItemsUpdate",
+  },
+  methods: {
+    ...mapActions(["logout", "showConfirm"]),
+    clickHandler(handlerName) {
+      switch (handlerName) {
+        case "logout":
+          this.onLogout();
+          break;
+        default:
+          console.log("not defined click handler :", handlerName);
+      }
+    },
+    onLogout() {
+      this.showConfirm([
+        "로그아웃 하시겠습니까?",
+        "로그아웃 안내",
+        this.onLogoutHandler,
+      ]);
+    },
+    onLogoutHandler(flag) {
+      if (flag) this.logout();
+    },
+    btnItemsUpdate(v) {
+      if (v) this.btnItems = loginAfterBtnItmes;
+      else this.btnItems = loginBeforeBtnItmes;
+    },
+  },
+  created() {
+    this.btnItemsUpdate(this.getIsLogin);
+  },
 };
 </script>

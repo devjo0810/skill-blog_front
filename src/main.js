@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import "./plugins/perfect-scrollbar";
+import "./plugins";
 import vuetify from "./plugins/vuetify";
 import "./filters";
 
