@@ -20,6 +20,14 @@
           ></v-text-field>
           <v-checkbox label="아이디 저장" v-model="isSave"></v-checkbox>
           <v-btn block color="accent" @click="validate">로그인</v-btn>
+          <div class="d-flex justify-space-between mt-3">
+            <router-link
+              v-for="(item, i) in linkItems"
+              :key="i"
+              :to="item.to"
+              >{{ item.text }}</router-link
+            >
+          </div>
         </div>
       </v-container>
     </v-form>
@@ -40,6 +48,16 @@ export default {
     password: "",
     passwordRules: [v => !!v || "비밀번호를 입력해주세요."],
     isSave: false,
+    linkItems: [
+      {
+        text: "아이디 찾기",
+        to: "/findid",
+      },
+      {
+        text: "비밀번호 찾기",
+        to: "/findpassword",
+      },
+    ],
   }),
   methods: {
     ...mapActions(["login"]),
