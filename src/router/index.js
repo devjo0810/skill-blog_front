@@ -27,6 +27,17 @@ const router = new VueRouter({
   routes,
 });
 
+// router path duplication 에러 방지
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+};
+
+router.beforeEach((to, from, next) => {
+  // 추후 로그인에 대한 라우터 가드 필요
+  next();
+});
+
 router.afterEach(() => {
   window.scrollTo(0, 0);
 });

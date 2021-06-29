@@ -11,7 +11,7 @@
       <v-list nav color="primary">
         <v-list-item
           v-for="(item, i) in btnItems"
-          :key="i"
+          :key="'navi_drawer_btnItems' + i"
           link
           :to="item.to"
           @click="clickHandler(item.handlerName)"
@@ -20,7 +20,12 @@
             <v-list-item-title>{{ item.text }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-for="(item, i) in barItems" :key="i" link :to="item.to">
+        <v-list-item
+          v-for="(item, i) in barItems"
+          :key="'navi_drawer_barItems' + i"
+          link
+          :to="item.to"
+        >
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
@@ -65,7 +70,7 @@
           >
             <v-btn
               v-for="(item, i) in barItems"
-              :key="i"
+              :key="'app_bar_barItems' + i"
               text
               class="text-capitalize"
               :to="item.to"
@@ -78,7 +83,7 @@
           <v-col class="text-right" v-if="$vuetify.breakpoint.mdAndUp" cols="3">
             <v-btn
               v-for="(item, i) in btnItems"
-              :key="i"
+              :key="'app_bar_btnItems' + i"
               :to="item.to"
               :color="item.color"
               class="ml-3 text-capitalize"
