@@ -2,12 +2,16 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeRouter from "./modules/Home";
 import SignRouter from "./modules/Sign";
+import BlogRouter from "./modules/Blog";
+import UserRouter from "./modules/User";
 
 Vue.use(VueRouter);
 
 const routes = [
   ...HomeRouter,
   ...SignRouter,
+  ...BlogRouter,
+  ...UserRouter,
   {
     path: "/template",
     name: "Template",

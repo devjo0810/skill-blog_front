@@ -137,20 +137,20 @@ export default {
     btnItems: loginBeforeBtnItmes,
     barItems: [
       {
-        title: "Home",
+        title: "홈",
         to: "/",
       },
       {
-        title: "Template",
+        title: "블로그 검색",
+        to: "/blog",
+      },
+      {
+        title: "유저 검색",
+        to: "/user",
+      },
+      {
+        title: "템플릿",
         to: "/template",
-      },
-      {
-        title: "Detail",
-        to: "/detail",
-      },
-      {
-        title: "Authors",
-        to: "/authors",
       },
     ],
   }),

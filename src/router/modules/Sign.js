@@ -1,13 +1,11 @@
 const Login = () =>
-  import(/* webpackChunkName: "login" */ "@/views/sign/Login.vue");
+  import(/* webpackChunkName: "sign" */ "@/views/sign/Login.vue");
 const Signup = () =>
-  import(/* webpackChunkName: "signup" */ "@/views/sign/Signup.vue");
+  import(/* webpackChunkName: "sign" */ "@/views/sign/Signup.vue");
 const FindId = () =>
-  import(/* webpackChunkName: "findid" */ "@/views/sign/FindId.vue");
+  import(/* webpackChunkName: "sign" */ "@/views/sign/FindId.vue");
 const FindPassword = () =>
-  import(
-    /* webpackChunkName: "findpassword" */ "@/views/sign/FindPassword.vue"
-  );
+  import(/* webpackChunkName: "sign" */ "@/views/sign/FindPassword.vue");
 
 export default [
   {
